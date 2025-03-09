@@ -1,0 +1,13 @@
+{
+    "name": "elastic-app",
+    "version": "1.0.0",
+    "description": "A Node.js app that logs messages to stdout",
+    "main": "app.js",
+    "dependencies": {
+      "winston": "^3.8.2"
+    },
+    "scripts": {
+      "start": "node app.js"
+    }
+  }
+  

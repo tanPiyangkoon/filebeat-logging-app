@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  elastic-app:
+    build: ./elastic-app
+    container_name: elastic-app
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:8.17.1
+    container_name: filebeat
+    user: root
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
+    environment:
+      - ELASTICSEARCH_HOSTS=http://10.2.114.76:9200
